@@ -5,9 +5,7 @@
 <script>
 module.exports = {
   data() {
-    // interesting, is it?
-    console.log(document.title, this.$route.title);
-    document.title = 'new title';
+    document.title = 'index';
 
     return {
       msg: 'Hello World!',

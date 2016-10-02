@@ -1,21 +1,26 @@
 import Vue from 'vue';
+import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 
-import routerMap from './router';
+import routes from './routes';
+import stores from './stores';
 
 Vue.config.debug = true;
 
 Vue.use(VueRouter);
+Vue.use(Vuex);
 Vue.use(VueResource);
 
 const router = new VueRouter({
-  hashbang: false,
-  history: true,
+  mode: 'history',
+  routes,
 });
 
-routerMap(router);
+const store = new Vuex.Store(stores);
 
-const app = Vue.extend({});
-
-router.start(app, 'html');
+new Vue({
+  router,
+  store,
+  template: '',
+}).$mount('#app');
